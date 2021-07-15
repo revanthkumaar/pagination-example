@@ -13,6 +13,8 @@ export class TopicsService {
   constructor(private http: HttpClient) {}
 
   getPaginatedInfo(params:any): Observable<any> {
+
+    const {pageNum,sizePage} = params;
       //this.http.get(url,options)
     return this.http.get<any>(`${baseurl}?page={pageNum}&size{sizePage}`);
 
