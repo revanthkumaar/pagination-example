@@ -11,11 +11,12 @@ export class TopicsComponent implements OnInit {
   topics: Topic[] = [];
   page = 1;
   size = 2;
+  title="paginate"
 
   ngOnInit(): void {
     this.retrievePaginatedInfo();
   }
-  
+
   getRequestParams(page: number, size: number) {
     let params: any = {};
     if (page) {
@@ -35,13 +36,25 @@ export class TopicsComponent implements OnInit {
     this.topicsService.getPaginatedInfo(params).subscribe(
       (response) => {
         const { topics, totalItems, ...otherProps } = response; //object destructure
-        console.log(topics)
-        console.log(totalItems)
+        console.log(topics);
+        console.log(totalItems);
       },
       (error) => {
         console.log(error);
       }
     );
   }
-  
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrievePaginatedInfo();
+  }
+
+  searchTitle() {
+    console.log('search clicked');
+  }
+
+  removeAllPassengers(){
+    console.log('delete clicked')
+  }
 }
