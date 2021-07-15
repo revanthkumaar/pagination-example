@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators'
 import { analyzeFileForInjectables } from '@angular/compiler';
 
 const baseurl = 'https://api.instantwebtools.net/v1/passenger';
@@ -11,8 +12,18 @@ const baseurl = 'https://api.instantwebtools.net/v1/passenger';
 export class TopicsService {
   constructor(private http: HttpClient) {}
 
-  getPaginatedInfo(pageNum: any,sizePage: any): Observable<any> {
+  getPaginatedInfo(params:any): Observable<any> {
+      //this.http.get(url,options)
     return this.http.get<any>(`${baseurl}?page={pageNum}&size{sizePage}`);
+
+    /*  
+    options: {
+       observe: 'body',
+       responseType: 'json'
+    }
+    */
+
+
   }
 
 }
