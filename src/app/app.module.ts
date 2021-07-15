@@ -7,9 +7,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TopicsComponent } from './topics/topics.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TopicsComponent],
   imports: [BrowserModule, AppRoutingModule, NgxPaginationModule],
   providers: [],
   bootstrap: [AppComponent],
