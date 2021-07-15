@@ -13,17 +13,17 @@ export class TopicsComponent implements OnInit {
   size = 2;
 
   ngOnInit(): void {
-    //this.retrievePaginatedInfo();
+    this.retrievePaginatedInfo();
   }
-  /*
+  
   getRequestParams(page: number, size: number) {
     let params: any = {};
     if (page) {
-      params[`page`] = 10;
+      params[`pageNum`] = 0;
     }
 
     if (size) {
-      params['size'] = 2;
+      params['sizePage'] = 10;
     }
 
     return params;
@@ -43,5 +43,5 @@ export class TopicsComponent implements OnInit {
       }
     );
   }
-  */
+  
 }

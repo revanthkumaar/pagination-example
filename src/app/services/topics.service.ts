@@ -16,7 +16,7 @@ export class TopicsService {
 
     const {pageNum,sizePage} = params;
       //this.http.get(url,options)
-    return this.http.get<any>(`${baseurl}?page={pageNum}&size{sizePage}`);
+    return this.http.get<any>(`${baseurl}?page=${pageNum}&size=${sizePage}`);
 
     /*  
     options: {
