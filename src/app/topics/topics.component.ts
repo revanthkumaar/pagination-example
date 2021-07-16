@@ -9,29 +9,34 @@ import { Topic } from '../models/topics.model';
 export class TopicsComponent implements OnInit {
   constructor(private topicsService: TopicsService) {}
   topics: Topic[] = [];
-  page = 1;
-  size = 2;
-  title="paginate"
+  page = 0;
+  size = 10;
+  title = '';
 
   ngOnInit(): void {
     this.retrievePaginatedInfo();
   }
 
-  getRequestParams(page: number, size: number) {
+  getRequestParams(searchTitle: string,page: number, size: number) {
     let params: any = {};
+
+    if(searchTitle) {
+      params['title'] = searchTitle;
+    }
+
     if (page) {
-      params[`pageNum`] = 0;
+      params[`pageNum`] = page;
     }
 
     if (size) {
-      params['sizePage'] = 10;
+      params['sizePage'] = size;
     }
 
     return params;
   }
 
   retrievePaginatedInfo(): void {
-    const params = this.getRequestParams(this.page, this.size);
+    const params = this.getRequestParams(this.title,this.page, this.size);
 
     this.topicsService.getPaginatedInfo(params).subscribe(
       (response) => {
@@ -50,8 +55,8 @@ export class TopicsComponent implements OnInit {
     this.retrievePaginatedInfo();
   }
 
-  searchTitle() {
-    console.log('search clicked');
+  searchTitle(): void {
+    this.retrievePaginatedInfo();
   }
 
   removeAllPassengers(){
