@@ -5,19 +5,20 @@ import { catchError, retry } from 'rxjs/operators';
 import { analyzeFileForInjectables } from '@angular/compiler';
 
 const baseurlForPassengers = 'https://api.instantwebtools.net/v1/passenger';
-const SearchUrl = 'http://api.plos.org/search';
+const SearchTitleUrl = 'http://api.plos.org/search';
+let urlToCall = '';
 @Injectable({
   providedIn: 'root',
 })
 export class TopicsService {
   constructor(private http: HttpClient) {}
-
+ 
   getPaginatedInfo(params: any): Observable<any> {
-    const urlToCall = '';
+
     if (params.searchTitle) {
-      urlToCall;
+      urlToCall = baseurlForPassengers;
     } else {
-      urlToCall;
+      urlToCall = SearchTitleUrl;
     }
 
     const { pageNum, sizePage, searchTitle } = params;
